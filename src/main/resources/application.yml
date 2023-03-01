@@ -3,10 +3,10 @@ spring:
     name: user-center-backend
   # DataSource Config  有严格的缩进方式
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/yupi
-    username: root
-    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://82.157.245.106:3306/user_center
+    username: doglyc
+    password: Lyc123...
   session:
     timeout: 86400     #一天后失效
 server:

@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.yupi.usercenter.Mapper")
+@MapperScan("com.yupi.usercenter.mapper")
 public class UserCenterApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserCenterApplication.class,args);

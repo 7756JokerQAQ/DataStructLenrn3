@@ -1,5 +1,4 @@
 package com.yupi.usercenter.service.impl;
-
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.yupi.usercenter.common.ErrorCode;
@@ -11,12 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import static com.yupi.usercenter.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
@@ -47,7 +44,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     if(planetCode.length()>5){
         throw new BusinessException(ErrorCode.PARAMS_ERROR,"用户编码过长");
     }
-    //正则表达式子不能包含特殊字符
+        //正则表达式子不能包含特殊字符
         String validPattern = "[`~!@#$%^&*()+=|{}':;',\\\\[\\\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]";
         Matcher matcher= Pattern.compile(validPattern).matcher(userAccount);
         if(matcher.find()){
@@ -66,7 +63,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
 
         //编号不能重复
-         queryWrapper = new QueryWrapper<>();
+        queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("planetCode",planetCode);
          count=userMapper.selectCount(queryWrapper);
         if(count>0){
@@ -82,7 +79,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if(!saveResult){
             return -1;
         }
-
         return user.getId();
     }
 
@@ -151,7 +147,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         safetyUser.setCreateTime(originUser.getCreateTime());
         return safetyUser;
     }
-
     /**
      * 用户注销成功了返回1
      * @param request
@@ -162,10 +157,5 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         request.getSession().getAttribute(USER_LOGIN_STATE);
         return 1;
     }
-
-
 }
-
-
-
 
